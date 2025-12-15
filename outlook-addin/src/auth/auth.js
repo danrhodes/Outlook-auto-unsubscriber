@@ -3,12 +3,12 @@
  */
 
 // MSAL Configuration
-// NOTE: You need to replace these values after creating your Azure AD app
+// TODO: Replace YOUR_CLIENT_ID_HERE with your actual Azure AD Application (client) ID
 const msalConfig = {
     auth: {
-        clientId: "YOUR_CLIENT_ID_HERE", // Replace with your Azure AD App Client ID
+        clientId: "YOUR_CLIENT_ID_HERE", // ← PASTE YOUR CLIENT ID HERE (from Azure Portal)
         authority: "https://login.microsoftonline.com/common",
-        redirectUri: window.location.origin + "/outlook-addin/src/taskpane/taskpane.html"
+        redirectUri: window.location.origin + "/Outlook-auto-unsubscriber/outlook-addin/src/taskpane/taskpane.html"
     },
     cache: {
         cacheLocation: "localStorage",

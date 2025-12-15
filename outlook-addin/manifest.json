@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/office-js/add-in-manifest.schema.json",
   "manifestVersion": "1.1",
-  "id": "12345678-1234-1234-1234-123456789abc",
+  "id": "622a3c48-8b28-40b3-ad87-f86c2467bd57",
   "version": "1.0.0.0",
   "providerName": "Outlook Auto-Unsubscriber",
   "defaultLocale": "en-US",
@@ -11,9 +11,9 @@
   "description": {
     "default": "Automatically scan your mailbox for unsubscribe links and manage email subscriptions"
   },
-  "iconUrl": "https://YOUR-GITHUB-USERNAME.github.io/Outlook-auto-unsubscriber/assets/icon-64.png",
-  "highResolutionIconUrl": "https://YOUR-GITHUB-USERNAME.github.io/Outlook-auto-unsubscriber/assets/icon-128.png",
-  "supportUrl": "https://github.com/YOUR-USERNAME/Outlook-auto-unsubscriber",
+  "iconUrl": "https://danrhodes.github.io/Outlook-auto-unsubscriber/outlook-addin/assets/icon-64.png",
+  "highResolutionIconUrl": "https://danrhodes.github.io/Outlook-auto-unsubscriber/outlook-addin/assets/icon-128.png",
+  "supportUrl": "https://github.com/danrhodes/Outlook-auto-unsubscriber",
   "hosts": [
     {
       "type": "Mailbox"
@@ -32,17 +32,17 @@
       {
         "formType": "read",
         "formFactor": "desktop",
-        "sourceLocation": "https://YOUR-GITHUB-USERNAME.github.io/Outlook-auto-unsubscriber/src/taskpane/taskpane.html"
+        "sourceLocation": "https://danrhodes.github.io/Outlook-auto-unsubscriber/outlook-addin/src/taskpane/taskpane.html"
       },
       {
         "formType": "read",
         "formFactor": "tablet",
-        "sourceLocation": "https://YOUR-GITHUB-USERNAME.github.io/Outlook-auto-unsubscriber/src/taskpane/taskpane.html"
+        "sourceLocation": "https://danrhodes.github.io/Outlook-auto-unsubscriber/outlook-addin/src/taskpane/taskpane.html"
       },
       {
         "formType": "read",
         "formFactor": "phone",
-        "sourceLocation": "https://YOUR-GITHUB-USERNAME.github.io/Outlook-auto-unsubscriber/src/taskpane/taskpane.html"
+        "sourceLocation": "https://danrhodes.github.io/Outlook-auto-unsubscriber/outlook-addin/src/taskpane/taskpane.html"
       }
     ]
   },
@@ -53,7 +53,7 @@
     }
   ],
   "validDomains": [
-    "YOUR-GITHUB-USERNAME.github.io",
+    "danrhodes.github.io",
     "login.microsoftonline.com",
     "graph.microsoft.com"
   ],
@@ -75,9 +75,9 @@
                 "default": "Scan for Unsubscribe Links"
               },
               "icons": {
-                "size16": "https://YOUR-GITHUB-USERNAME.github.io/Outlook-auto-unsubscriber/assets/icon-16.png",
-                "size32": "https://YOUR-GITHUB-USERNAME.github.io/Outlook-auto-unsubscriber/assets/icon-32.png",
-                "size80": "https://YOUR-GITHUB-USERNAME.github.io/Outlook-auto-unsubscriber/assets/icon-80.png"
+                "size16": "https://danrhodes.github.io/Outlook-auto-unsubscriber/outlook-addin/assets/icon-16.png",
+                "size32": "https://danrhodes.github.io/Outlook-auto-unsubscriber/outlook-addin/assets/icon-32.png",
+                "size80": "https://danrhodes.github.io/Outlook-auto-unsubscriber/outlook-addin/assets/icon-80.png"
               },
               "supertip": {
                 "title": {
@@ -89,7 +89,7 @@
               },
               "action": {
                 "type": "showTaskpane",
-                "sourceLocation": "https://YOUR-GITHUB-USERNAME.github.io/Outlook-auto-unsubscriber/src/taskpane/taskpane.html"
+                "sourceLocation": "https://danrhodes.github.io/Outlook-auto-unsubscriber/outlook-addin/src/taskpane/taskpane.html"
               }
             }
           ]
