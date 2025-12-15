@@ -1,6 +1,7 @@
 # 📧 Outlook Auto-Unsubscriber
 
 A powerful tool to help you find and unsubscribe from unwanted email newsletters and mailing lists in your Microsoft 365/Outlook account.
+<img width="1429" height="883" alt="image" src="https://github.com/user-attachments/assets/817d93c7-fc63-4dbb-a06f-6a5dd721aeb0" />
 
 ## 🌟 Features
 
