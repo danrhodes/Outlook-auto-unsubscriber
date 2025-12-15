@@ -1,0 +1,100 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/office-js/add-in-manifest.schema.json",
+  "manifestVersion": "1.1",
+  "id": "12345678-1234-1234-1234-123456789abc",
+  "version": "1.0.0.0",
+  "providerName": "Outlook Auto-Unsubscriber",
+  "defaultLocale": "en-US",
+  "displayName": {
+    "default": "Auto-Unsubscriber"
+  },
+  "description": {
+    "default": "Automatically scan your mailbox for unsubscribe links and manage email subscriptions"
+  },
+  "iconUrl": "https://YOUR-GITHUB-USERNAME.github.io/Outlook-auto-unsubscriber/assets/icon-64.png",
+  "highResolutionIconUrl": "https://YOUR-GITHUB-USERNAME.github.io/Outlook-auto-unsubscriber/assets/icon-128.png",
+  "supportUrl": "https://github.com/YOUR-USERNAME/Outlook-auto-unsubscriber",
+  "hosts": [
+    {
+      "type": "Mailbox"
+    }
+  ],
+  "requirements": {
+    "sets": [
+      {
+        "name": "Mailbox",
+        "minVersion": "1.10"
+      }
+    ]
+  },
+  "formSettings": {
+    "form": [
+      {
+        "formType": "read",
+        "formFactor": "desktop",
+        "sourceLocation": "https://YOUR-GITHUB-USERNAME.github.io/Outlook-auto-unsubscriber/src/taskpane/taskpane.html"
+      },
+      {
+        "formType": "read",
+        "formFactor": "tablet",
+        "sourceLocation": "https://YOUR-GITHUB-USERNAME.github.io/Outlook-auto-unsubscriber/src/taskpane/taskpane.html"
+      },
+      {
+        "formType": "read",
+        "formFactor": "phone",
+        "sourceLocation": "https://YOUR-GITHUB-USERNAME.github.io/Outlook-auto-unsubscriber/src/taskpane/taskpane.html"
+      }
+    ]
+  },
+  "permissions": [
+    {
+      "name": "ReadWriteMailbox",
+      "value": "ReadWriteMailbox"
+    }
+  ],
+  "validDomains": [
+    "YOUR-GITHUB-USERNAME.github.io",
+    "login.microsoftonline.com",
+    "graph.microsoft.com"
+  ],
+  "extensionPoints": [
+    {
+      "type": "MessageReadCommandSurface",
+      "officeTab": "TabDefault",
+      "groups": [
+        {
+          "id": "msgReadGroup",
+          "label": {
+            "default": "Unsubscribe"
+          },
+          "controls": [
+            {
+              "id": "msgReadOpenPaneButton",
+              "type": "button",
+              "label": {
+                "default": "Scan for Unsubscribe Links"
+              },
+              "icons": {
+                "size16": "https://YOUR-GITHUB-USERNAME.github.io/Outlook-auto-unsubscriber/assets/icon-16.png",
+                "size32": "https://YOUR-GITHUB-USERNAME.github.io/Outlook-auto-unsubscriber/assets/icon-32.png",
+                "size80": "https://YOUR-GITHUB-USERNAME.github.io/Outlook-auto-unsubscriber/assets/icon-80.png"
+              },
+              "supertip": {
+                "title": {
+                  "default": "Scan Mailbox"
+                },
+                "description": {
+                  "default": "Find and manage unsubscribe links in your emails"
+                }
+              },
+              "action": {
+                "type": "showTaskpane",
+                "sourceLocation": "https://YOUR-GITHUB-USERNAME.github.io/Outlook-auto-unsubscriber/src/taskpane/taskpane.html"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

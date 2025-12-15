@@ -1,0 +1,396 @@
+/* Modern Fluent UI styling aligned with Outlook */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    background-color: #faf9f8;
+    color: #323130;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #0078d4 0%, #106ebe 100%);
+    color: white;
+    padding: 24px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    margin-bottom: 4px;
+}
+
+.header p {
+    opacity: 0.9;
+}
+
+/* Section */
+.section {
+    padding: 20px;
+    background: white;
+    margin-bottom: 1px;
+}
+
+/* Authentication */
+.auth-container {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.ms-Button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #8a8886;
+    border-radius: 2px;
+    background-color: white;
+    color: #323130;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.1s;
+    text-align: center;
+    font-family: inherit;
+}
+
+.ms-Button:hover {
+    background-color: #f3f2f1;
+    border-color: #323130;
+}
+
+.ms-Button--primary {
+    background-color: #0078d4;
+    border-color: #0078d4;
+    color: white;
+}
+
+.ms-Button--primary:hover {
+    background-color: #106ebe;
+    border-color: #106ebe;
+}
+
+.ms-Button:active {
+    transform: scale(0.98);
+}
+
+/* Form Controls */
+.control-panel {
+    max-width: 500px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.ms-Label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #323130;
+}
+
+.ms-TextField-field,
+.ms-Dropdown {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #8a8886;
+    border-radius: 2px;
+    font-size: 14px;
+    font-family: inherit;
+    background-color: white;
+    color: #323130;
+}
+
+.ms-TextField-field:focus,
+.ms-Dropdown:focus {
+    outline: none;
+    border-color: #0078d4;
+    box-shadow: 0 0 0 1px #0078d4;
+}
+
+.button-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+/* Progress */
+.progress-container {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background-color: #edebe9;
+    border-radius: 2px;
+    margin-top: 16px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #0078d4;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+#progress-text {
+    margin-top: 12px;
+    color: #605e5c;
+}
+
+/* Statistics */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.stat-card {
+    background: #f3f2f1;
+    padding: 16px;
+    border-radius: 4px;
+    text-align: center;
+    border-left: 3px solid #0078d4;
+}
+
+.stat-card.high-priority {
+    border-left-color: #d13438;
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0078d4;
+    margin-bottom: 4px;
+}
+
+.stat-card.high-priority .stat-value {
+    color: #d13438;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #605e5c;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Filters */
+.filters {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.filters > * {
+    flex: 1;
+    min-width: 150px;
+}
+
+/* Results Table */
+.results-container {
+    overflow-x: auto;
+    margin-top: 12px;
+}
+
+.ms-Table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.ms-Table th,
+.ms-Table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #edebe9;
+}
+
+.ms-Table th {
+    background-color: #f3f2f1;
+    font-weight: 600;
+    color: #323130;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ms-Table tbody tr:hover {
+    background-color: #faf9f8;
+}
+
+.ms-Table tbody tr.clicked {
+    opacity: 0.5;
+    background-color: #edebe9;
+}
+
+/* Priority Badges */
+.priority-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 2px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.priority-high {
+    background-color: #fde7e9;
+    color: #d13438;
+}
+
+.priority-medium {
+    background-color: #fff4ce;
+    color: #ca5010;
+}
+
+.priority-low {
+    background-color: #e1dfdd;
+    color: #605e5c;
+}
+
+/* Unsubscribe Link Button */
+.unsub-link {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #0078d4;
+    color: white;
+    text-decoration: none;
+    border-radius: 2px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background-color 0.1s;
+}
+
+.unsub-link:hover {
+    background-color: #106ebe;
+}
+
+.unsub-link:active {
+    transform: scale(0.98);
+}
+
+.link-preview {
+    display: block;
+    margin-top: 4px;
+    font-size: 11px;
+    color: #605e5c;
+    word-break: break-all;
+}
+
+/* Email Subject */
+.email-subject {
+    color: #605e5c;
+    font-size: 13px;
+    font-style: italic;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Message Bar */
+.ms-MessageBar {
+    padding: 12px 16px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+}
+
+.ms-MessageBar--info {
+    background-color: #f3f2f1;
+    border-left: 3px solid #0078d4;
+}
+
+.ms-MessageBar--error {
+    background-color: #fde7e9;
+    border-left: 3px solid #d13438;
+}
+
+.ms-MessageBar-content {
+    flex: 1;
+}
+
+.ms-MessageBar-text {
+    color: #323130;
+    font-size: 14px;
+}
+
+/* Spinner */
+.ms-Spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #edebe9;
+    border-top-color: #0078d4;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .header {
+        padding: 16px;
+    }
+
+    .section {
+        padding: 16px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .filters {
+        flex-direction: column;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .button-group .ms-Button {
+        width: 100%;
+    }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f3f2f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c8c6c4;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8a8886;
+}

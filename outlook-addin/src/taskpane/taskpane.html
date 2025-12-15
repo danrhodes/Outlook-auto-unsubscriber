@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>Auto-Unsubscriber</title>
+
+    <!-- Office.js -->
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+
+    <!-- MSAL.js for authentication -->
+    <script src="https://alcdn.msauth.net/browser/2.38.1/js/msal-browser.min.js"></script>
+
+    <!-- Microsoft Graph Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@microsoft/microsoft-graph-client/lib/graph-js-sdk.js"></script>
+
+    <!-- Fluent UI Web Components -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="taskpane.css">
+</head>
+<body class="ms-Fabric">
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="ms-fontSize-24 ms-fontWeight-semibold">Auto-Unsubscriber</h1>
+            <p class="ms-fontSize-14 ms-fontColor-neutralSecondary">Find and manage email subscriptions</p>
+        </div>
+
+        <!-- Authentication Section -->
+        <div id="auth-section" class="section">
+            <div class="auth-container">
+                <div class="ms-MessageBar ms-MessageBar--info" style="margin-bottom: 16px;">
+                    <div class="ms-MessageBar-content">
+                        <div class="ms-MessageBar-text">
+                            Sign in with your Microsoft 365 account to scan your mailbox
+                        </div>
+                    </div>
+                </div>
+                <button id="signin-button" class="ms-Button ms-Button--primary">
+                    <span class="ms-Button-label">Sign In with Microsoft 365</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content (hidden until authenticated) -->
+        <div id="main-content" style="display: none;">
+
+            <!-- Control Panel -->
+            <div class="section">
+                <div class="control-panel">
+                    <h2 class="ms-fontSize-18 ms-fontWeight-semibold">Scan Options</h2>
+
+                    <div class="form-group">
+                        <label class="ms-Label">Days to scan back:</label>
+                        <input type="number" id="days-input" class="ms-TextField-field" value="30" min="1" max="365">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="ms-Label">Folder to scan:</label>
+                        <select id="folder-select" class="ms-Dropdown">
+                            <option value="inbox">Inbox</option>
+                            <option value="sentitems">Sent Items</option>
+                            <option value="junkemail">Junk Email</option>
+                            <option value="allmail">All Mail</option>
+                        </select>
+                    </div>
+
+                    <div class="button-group">
+                        <button id="scan-all-button" class="ms-Button ms-Button--primary">
+                            <span class="ms-Button-label">Scan All Emails</span>
+                        </button>
+                        <button id="scan-selected-button" class="ms-Button">
+                            <span class="ms-Button-label">Scan Selected Email</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Section -->
+            <div id="progress-section" class="section" style="display: none;">
+                <div class="progress-container">
+                    <div class="ms-Spinner ms-Spinner--large"></div>
+                    <p id="progress-text" class="ms-fontSize-14">Scanning emails...</p>
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Dashboard -->
+            <div id="stats-section" class="section" style="display: none;">
+                <h2 class="ms-fontSize-18 ms-fontWeight-semibold">Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="stat-total-emails">0</div>
+                        <div class="stat-label">Total Emails</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="stat-unique-domains">0</div>
+                        <div class="stat-label">Unique Domains</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="stat-with-unsubscribe">0</div>
+                        <div class="stat-label">With Unsubscribe</div>
+                    </div>
+                    <div class="stat-card high-priority">
+                        <div class="stat-value" id="stat-high-priority">0</div>
+                        <div class="stat-label">High Priority</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div id="filters-section" class="section" style="display: none;">
+                <div class="filters">
+                    <input type="text" id="search-box" class="ms-TextField-field" placeholder="Search domains or subjects...">
+                    <select id="priority-filter" class="ms-Dropdown">
+                        <option value="all">All Priorities</option>
+                        <option value="high">High Priority (10+)</option>
+                        <option value="medium">Medium Priority (3-9)</option>
+                        <option value="low">Low Priority (1-2)</option>
+                    </select>
+                    <select id="sort-select" class="ms-Dropdown">
+                        <option value="priority">Sort by Priority</option>
+                        <option value="domain">Sort by Domain</option>
+                        <option value="count">Sort by Count</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Results Table -->
+            <div id="results-section" class="section" style="display: none;">
+                <h2 class="ms-fontSize-18 ms-fontWeight-semibold">Unsubscribe Links</h2>
+                <div class="results-container">
+                    <table id="results-table" class="ms-Table">
+                        <thead>
+                            <tr>
+                                <th>Priority</th>
+                                <th>Domain</th>
+                                <th>Count</th>
+                                <th>Recent Subject</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="results-body">
+                            <!-- Results will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Sign Out -->
+            <div class="section">
+                <button id="signout-button" class="ms-Button">
+                    <span class="ms-Button-label">Sign Out</span>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Error Display -->
+        <div id="error-section" class="section" style="display: none;">
+            <div class="ms-MessageBar ms-MessageBar--error">
+                <div class="ms-MessageBar-content">
+                    <div class="ms-MessageBar-text" id="error-text"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../auth/auth.js"></script>
+    <script src="../services/graph.js"></script>
+    <script src="../services/scanner.js"></script>
+    <script src="taskpane.js"></script>
+</body>
+</html>

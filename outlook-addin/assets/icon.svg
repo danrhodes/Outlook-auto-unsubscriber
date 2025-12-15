@@ -1,0 +1,10 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Blue envelope -->
+  <rect x="16" y="36" width="96" height="64" rx="4" fill="#0078d4" stroke="#005a9e" stroke-width="2"/>
+  <path d="M 16 36 L 64 68 L 112 36" stroke="#005a9e" stroke-width="2" fill="none"/>
+  <path d="M 16 36 L 64 68 L 112 36" stroke="white" stroke-width="1.5" fill="none" opacity="0.6"/>
+
+  <!-- Red X circle (unsubscribe symbol) -->
+  <circle cx="96" cy="32" r="24" fill="#d13438"/>
+  <path d="M 86 22 L 106 42 M 106 22 L 86 42" stroke="white" stroke-width="4" stroke-linecap="round"/>
+</svg>
