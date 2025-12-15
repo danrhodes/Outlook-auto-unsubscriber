@@ -58,18 +58,10 @@ When prompted, type **Y** and press **Enter**.
 
 ### Step 4: Run the Script
 
-Choose which version to run:
-
-#### 🎯 **Recommended: Enhanced Version** (with all features)
+Type this command and press Enter:
 
 ```powershell
 .\Find_Unsubscribe_Links-Enhanced.ps1
-```
-
-#### 📌 **Basic Version** (simpler, faster)
-
-```powershell
-.\Find_Unsubscribe_Links-Graph.ps1
 ```
 
 ### Step 5: Follow the Prompts
@@ -122,9 +114,7 @@ When complete:
 2. Type `y` and press **Enter**
 3. Your default browser will open with an interactive report!
 
-The report is saved as:
-- Enhanced version: `unsubscribe-links-enhanced.html`
-- Basic version: `unsubscribe-links.html`
+The report is saved as: `unsubscribe-links-enhanced.html`
 
 ## 📊 Understanding Your Report
 
@@ -307,7 +297,7 @@ A: No. The script only reads metadata, it doesn't "open" or mark emails.
 
 ## 📜 Version History
 
-### v2.0 - Enhanced Edition
+### v2.0 - Enhanced Edition (Current)
 - ✨ Email count per domain
 - ✨ Priority detection system
 - ✨ Interactive filtering and sorting
@@ -316,8 +306,6 @@ A: No. The script only reads metadata, it doesn't "open" or mark emails.
 - ✨ One-click unsubscribe (RFC 8058)
 - ✨ Statistics dashboard
 - ✨ Beautiful modern UI
-
-### v1.0 - Graph API Edition
 - ✅ Microsoft Graph API integration
 - ✅ Multi-method unsubscribe detection
 - ✅ HTML report generation
